@@ -1,35 +1,41 @@
-/* Scroll for vision */
-const scrollAppearVision = () => {
-	let scroll = document.querySelector('.scroll');
-	let scrollPosition = scroll.getBoundingClientRect().top;
-	let screenPosition = window.innerHeight;
+// DRY and Update:
+// let scrollClass = document.querySelector('.scroll');
+// console.log(scrollClass.getBoundingClientRect());
 
-	if (scrollPosition < screenPosition) {
-		scroll.classList.add('scrollAppear');
+// To take more control on time during scrolling for big projects:
+let numberOfScrollAppear = 1;
+
+const isVisible = (element) => {
+	let elementBox = element.getBoundingClientRect().top;
+	let distanceFromTop = window.innerHeight;
+
+	if (elementBox < distanceFromTop) {
+		return true;
+	} else {
+		return false;
 	}
 };
-window.addEventListener('scroll', scrollAppearVision);
 
-/* Scroll for service */
-const scrollAppearFunc1 = () => {
-	let scroll = document.querySelector('.scroll1');
-	let scrollPosition = scroll.getBoundingClientRect().top;
-	let screenPosition = window.innerHeight / 2;
+const scrollAppearFunc = (element) => {
+	let sectionList = document.querySelectorAll('.scroll');
+	sectionList.forEach((section) => {
+		if (isVisible(section)) {
+			section.classList.add('scrollAppear');
+		}
+	});
 
-	if (scrollPosition < screenPosition) {
-		scroll.classList.add('scrollAppear1');
-	}
+	console.log(numberOfScrollAppear);
+	numberOfScrollAppear++;
 };
-window.addEventListener('scroll', scrollAppearFunc1);
 
-/* Scroll for requirements */
-const scrollAppearFunc2 = () => {
-	let scroll = document.querySelector('.scroll2');
-	let scrollPosition = scroll.getBoundingClientRect().top;
-	let screenPosition = window.innerHeight / 2;
-
-	if (scrollPosition < screenPosition) {
-		scroll.classList.add('scrollAppear2');
-	}
+const throttle = (fn, wait) => {
+	let time = Date.now();
+	return () => {
+		if (time + wait - Date.now() < 0) {
+			fn();
+			time = Date.now();
+		}
+	};
 };
-window.addEventListener('scroll', scrollAppearFunc2);
+
+document.addEventListener('scroll', throttle(scrollAppearFunc, 500));

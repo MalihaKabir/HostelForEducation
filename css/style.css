@@ -24,20 +24,21 @@ p {
 	border-radius: 300px;
 	font-weight: 600;
 }
-/* Scroll for vision */
+
+/* On-Scroll animation */
 .scroll {
 	opacity: 0;
 	transform: translateY(50px);
-	transition: 1.5s all ease-in-out;
 }
 .scrollAppear {
 	opacity: 1;
 	transform: translateY(0px);
+	transition: 1s all ease-in-out;
 }
-/* end of Scroll for vision */
+/* end of On-Scroll animation */
 
 /* Scroll for service */
-.scroll1 {
+/* .scroll1 {
 	opacity: 0;
 	transform: translateY(20px);
 	transition: 1.5s all ease-in-out;
@@ -45,11 +46,11 @@ p {
 .scrollAppear1 {
 	opacity: 1;
 	transform: translateY(0px);
-}
+} */
 /* Scroll for service ends */
 
 /* Scroll for requirements */
-.scroll2 {
+/* .scroll2 {
 	opacity: 0;
 	transform: translateY(20px);
 	transition: 1.5s all ease-in-out;
@@ -57,7 +58,7 @@ p {
 .scrollAppear2 {
 	opacity: 1;
 	transform: translateY(0px);
-}
+} */
 /* Scroll for requirements ends */
 
 /* navbar starts */
